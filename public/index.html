@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Papan Jadwal Hidup — Sekolah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand">
+      <div class="compass"></div>
+      <div>
+        <h1>Papan Jadwal Hidup</h1>
+        <p id="brandSub">Sekolah</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="picker-group">
+        <label>Kelas</label>
+        <button type="button" id="classPickerBtn" class="picker-btn" aria-haspopup="dialog" aria-expanded="false">
+          <span id="classPickerLabel">Pilih kelas</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="picker-group">
+        <label>Siklus</label>
+        <div class="cycle-toggle" id="cycleToggle" role="group" aria-label="Pilih siklus">
+          <button type="button" data-cycle="siklus1">Siklus 1</button>
+          <button type="button" data-cycle="siklus2">Siklus 2</button>
+        </div>
+      </div>
+      <div class="clockbox">
+        <div class="time" id="clockTime">--:--:--</div>
+        <div class="date" id="clockDate">memuat…</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="class-sheet-backdrop" id="classSheetBackdrop" hidden>
+    <div class="class-sheet" role="dialog" aria-modal="true" aria-label="Pilih kelas">
+      <div class="class-sheet-head">
+        <input type="text" id="classSearch" placeholder="Cari kelas… (mis. XI TKR 2)" autocomplete="off">
+        <button type="button" id="classSheetClose" aria-label="Tutup">✕</button>
+      </div>
+      <div class="class-sheet-tabs" id="classTabs"></div>
+      <div class="class-sheet-list" id="classList"></div>
+    </div>
+  </div>
+
+  <div class="status-banner" id="statusBanner">
+    <div style="flex:1; min-width:200px;">
+      <div class="mapel" id="statusMapel">—</div>
+      <div class="sub" id="statusSub">—</div>
+    </div>
+    <span class="badge" id="statusRoom">Ruang —</span>
+    <span class="badge" id="statusTime">--:-- – --:--</span>
+  </div>
+
+  <div class="example-note">
+    <b>Data:</b> jadwal 30 kelas SMKN 1 Cilamaya T.P. 2026-2027, 2 siklus (Jul-Sep / Okt-Des).
+    <b>Aturan ruang:</b> ruang menyala mengikuti <b>guru yang sedang mengajar</b>. Karena dokumen sumber
+    tidak mencantumkan nomor ruang asli, ruang tiap guru ditentukan otomatis dari kategori mapelnya.
+    Ada yang tidak sesuai kenyataan? Hubungi admin.
+  </div>
+
+  <div class="example-note" style="margin-top:12px;">
+    <b>Wali kelas belum tercantum?</b> Untuk beberapa kelas, wali kelasnya belum ditentukan sehingga
+    jam WALI di jadwal sengaja dikosongkan. Kalau kelasmu sudah punya wali kelas dan belum masuk data,
+    kabari admin lewat DM Instagram:
+    <a href="https://ig.me/m/im_rojak1" target="_blank" rel="noopener">Kirim pesan ke admin</a>
+  </div>
+
+  <section>
+    <h2>Denah Sekolah</h2>
+    <div class="map-legend" id="mapLegend"></div>
+    <div class="map-stage">
+      <div class="map-toprow"><div class="map-compass"></div><span>Berorientasi Utara — sesuai denah "Pembagian Ruang Belajar"</span></div>
+      <div class="campus" id="campus"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 id="tableTitle">Jadwal Minggu Ini</h2>
+    <div class="table-scroll">
+      <table id="scheduleTable"></table>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p><b>Catatan data:</b> Jadwal lengkap Senin–Jumat, jam ke-1 s.d. 9. Denah mengikuti posisi asli dari foto "Pembagian Ruang Belajar", orientasi Utara di atas.</p>
+  <p style="margin-top:8px;">Halaman ini menampilkan jadwal saja. Pengelolaan data dilakukan oleh admin melalui halaman khusus yang tidak ditautkan di sini.</p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
